@@ -1,11 +1,14 @@
 import pandas
 import datetime
 import math
+import os   
 from motionchart.motionchart import MotionChart
 #read data
-population=pandas.read_csv("data/ERP.csv")
-hourseprice=pandas.read_csv("data/House_Price_Index.csv")
-sa4=pandas.read_excel("data/SA4_Time_Series.xls",sheet_name="Time Series")
+path=os.getcwd()
+postion=path+"\\homework\\"
+population=pandas.read_csv(postion+"data\\ERP.csv")
+hourseprice=pandas.read_csv(postion+"data\\House_Price_Index.csv")
+sa4=pandas.read_excel(postion+"data\\SA4_Time_Series.xls",sheet_name="Time Series")
 #clean data
 sa4.drop(columns="Employment Rate (15-64)",inplace=True)
 sa4.drop(columns="Participation Rate (15+)",inplace=True)
