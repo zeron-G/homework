@@ -1,8 +1,8 @@
 import pandas
 import datetime
 import math
-import os   
-from motionchart.motionchart import MotionChart
+import os
+import matplotlib.pyplot as plt
 #read data
 path=os.getcwd()
 postion=path+"\\homework\\"
@@ -34,5 +34,28 @@ hourseprice["date"]=pandas.to_datetime(hourseprice["date"],format="%d-%b-%y")
 #merge data
 total=pandas.merge(population,hourseprice,on=["date","State"])
 final = pandas.merge(total, sa4, on=['date', 'State'])
-mChart = MotionChart(df=final, key='date', x='population', y='value', xscale='linear', yscale='linear', size='unemployment', color='State')
-mChart.to_notebook()
+#绘图
+df=final
+plt.figure(figsize=(10, 6))
+# 绘制柱状图
+plt.bar(df['date'], df['population'], label='Population')
+plt.xlabel('Date')
+plt.ylabel('Population')
+plt.title('Population Trend')
+plt.legend()
+
+# 显示图形
+plt.show()
+
+# 设置图形大小
+plt.figure(figsize=(10, 6))
+
+# 绘制折线图
+plt.plot(df['date'], df['value'], marker='o', label='Value')
+plt.xlabel('Date')
+plt.ylabel('Value')
+plt.title('Value Trend')
+plt.legend()
+
+# 显示图形
+plt.show()
