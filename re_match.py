@@ -6,6 +6,8 @@ data = {
     'Email': ['johndoe@gmail.com', 'janesmith@hotmail.com', 'bobjohnson@gmail.com', 'sally_lee@yahoo.com', 'bobjohnson@gmail.com', 'janesmith@hotmail.com', 'lily_lee@gmail.com']
 }
 df = pd.DataFrame(data)
+df=df.drop_duplicates()
+
 
 b=[]
  #使用正则表达式过滤非法格式的电子邮件
